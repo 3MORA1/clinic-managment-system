@@ -1,26 +1,30 @@
 import java.util.Scanner;
 
-import Projects.Doctor;
-import Projects.Clinic;
+import Projects.Author;
+import Projects.Book;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        Clinic c=new Clinic();
-        for(int i=0;i<3;i++){
-            System.out.println("Enter details of doctor "+(i+1)+" : ");
-            System.out.println("Name : ");
-            String name=input.nextLine();
+        Author author=new Author("OMAR");
+        Book b1=new Book(20);
+        b1.setNameofbook("world");
+        b1.setPrice(100);
+        Book b2=new Book("horse",30);
+        b2.setPrice(200);
+        Book b3=new Book("beauty",40,300);
+        author.Addbook(b1,0);
+        author.Addbook(b2,1);
+        author.Addbook(b3,2);
 
-            System.out.println("Working Day : ");
-            String day=input.nextLine();
-            Doctor d=new Doctor(name,day);
-            c.insert_doctor(d,i);
+        author.display_book_data();
+        Book b= author.searchbook("hor");
+        if(b!=null){
+            System.out.println("the data of book you have searched for is ");
+            b.displayinfo();
         }
-        System.out.println("#########################");
-        System.out.println("Doctor working on saturday are : ");
-        c.diplaydoctor("saturday");
+        else System.out.println("sorry!!!! \"we have not found your book\" ");
     }
-}
 
+}
